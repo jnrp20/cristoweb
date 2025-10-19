@@ -1,6 +1,6 @@
 package com.cristoweb.backend.entity;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.*;    
 
 @Entity
 @Table(name = "denominations")

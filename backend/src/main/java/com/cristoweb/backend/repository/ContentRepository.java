@@ -1,6 +1,7 @@
 package com.cristoweb.backend.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -9,7 +10,8 @@ import com.cristoweb.backend.entity.Content;
 
 @Repository
 public interface ContentRepository extends JpaRepository<Content, Long> {
-    
+
+
 List<Content> findByCategoryId(Long categoryId);// Filtrar por categoria
 
 
@@ -26,9 +28,10 @@ Content findByTitleContainingIgnoreCase(String title); //containingIgnoreCase es
 //si se desea busacar por titulo parcial
 List<Content> findByTitleContainingIgnoreCaseOrderByCreatedAtDesc(String title); //buscar por titulo parcial y ordenar por fecha de creacion descendente
 
+boolean existsByTitle(String title);
 
 
-void deleteById(Long id);
+
 
 
 

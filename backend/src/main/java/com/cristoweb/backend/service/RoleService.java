@@ -45,8 +45,31 @@ public class RoleService {
       // Obtener rol por nombre
     public Role getRoleByName(String name) {
         return roleRepository.findByRoleName(name).orElseThrow(() -> new RuntimeException("Rol no encontrado"));
+    }
     
-    
+
+     public void deleteRoleById(Long id){
+         roleRepository.deleteById(id);
+     };
+
+
+    // Actualizar rol
+    public Role updateRole(Long id, Role roleData) {
+        Role role = getRoleById(id); //metodo creado arriba //
+
+        if (roleData.getRoleName() != null) {// si el nombre del rol no es nulo
+            if (!roleData.getRoleName().equals(role.getRoleName()) && roleRepository.existsByName(roleData.getRoleName())) {// si el nombre del rol es diferente al actual y ya existe en la base de datos
+                throw new RuntimeException("Nombre de rol ya en uso");
+            }
+            role.setRoleName(roleData.getRoleName());
+        }
+
+        if (roleData.getRoleDescription() != null) {
+            role.setRoleDescription(roleData.getRoleDescription());
+        }
+
+        return roleRepository.save(role);
+    }
 }
 
-}
+

@@ -20,5 +20,6 @@ Optional<Role> findByRolNameIgnoreCaseRole(String rolName); // Método para enco
 Optional<Role> findByRoleName(String rolName);// Método para encontrar un rol por su nombre parcialmente
 
 boolean existsByName(String roleName); // Método para verificar si un rol existe por su nombre
+boolean existsById(Long id); // Método para verificar si un rol existe por su ID
 
 }
